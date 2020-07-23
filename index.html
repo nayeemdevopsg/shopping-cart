@@ -25,11 +25,11 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id ="rm-ph" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="cr-ph" type="text" class="form-control text-center" value="1">
+                           <button id = "ad-ph" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5>$ <span id="ph-pr">1219</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -43,12 +43,12 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="rm-cs"class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="cr-cs" type="text" class="form-control text-center" value="1">
+                           <button id="ad-cs" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5>$ <span id="cs-pr">59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -59,14 +59,14 @@
 
                      <div class="col-md-8">
                         <h5>Subtotal: </h5>
-                        <h5>Tax:</h5>
+                        <h5>Tax: (For 1 Each Product Tax's are Free) </h5>
                         <h5>Total:</h5>
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$1,278</h5>
-                        <h5>$0</h5>
-                        <h5>$1,278</h5>
+                        <h5>$ <span id="Subtotal"> 1278 </span></h5>
+                        <h5>$ <span id="tax">00</span></h5>
+                        <h5>$<span id="total"> 1278 </span></h5>
                      </div>
                   </div>
                </div>
@@ -77,6 +77,171 @@
          </div>
       </div>
    </section>
-</body>
 
+<script>
+   //Add phone count
+var addPhone = document.getElementById('ad-ph').addEventListener('click', function(){
+var currentNumber = document.getElementById('cr-ph').value;
+var number= parseFloat(currentNumber);
+var total = 1 + number;
+document.getElementById('cr-ph').value = total;
+
+//add phone price
+var updatePrice = document.getElementById('ph-pr').innerText;
+var newPrice = parseFloat(updatePrice);
+var crPPrice = newPrice + 1219;
+document.getElementById('ph-pr').innerText = crPPrice;
+
+
+//update phone subtotal
+const subTotalPrice = document.getElementById('Subtotal').innerText;
+const cn = parseFloat(subTotalPrice);
+const totalSub = cn + 1219;
+document.getElementById('Subtotal').innerText = totalSub;
+
+
+//update tax
+const totalTax = document.getElementById('tax').innerText;
+const cvn = parseFloat(totalTax);
+const taxCount = cvn + 12;
+document.getElementById('tax').innerText = taxCount;
+
+//update total
+
+const totalP = document.getElementById('total').innerText;
+const totalNum = parseFloat(totalP);
+const totalPrice = totalNum + 1219 + 12;
+document.getElementById('total').innerText = totalPrice;
+
+})
+
+//decrease phone count
+var removePhone = document.getElementById('rm-ph').addEventListener('click', function(){
+var rmPhone = document.getElementById('cr-ph').value;
+var cr = parseFloat(rmPhone);
+if (cr > 1){
+var still = cr - 1;
+document.getElementById('cr-ph').value = still;
+
+//decrease phone price
+var updatePrice = document.getElementById('ph-pr').innerText;
+var newPrice = parseFloat(updatePrice);
+var crPPrice = newPrice - 1219;
+document.getElementById('ph-pr').innerText = crPPrice;
+
+
+//Decrease subtotal for phone
+const subTotalPrice = document.getElementById('Subtotal').innerText;
+const cn = parseFloat(subTotalPrice);
+if( cn > 1219){
+   const totalSub = cn - 1219;
+document.getElementById('Subtotal').innerText = totalSub;
+}
+
+//decrease tax
+const totalTax = document.getElementById('tax').innerText;
+const cvn = parseFloat(totalTax);
+const taxCount = cvn - 12;
+document.getElementById('tax').innerText = taxCount;
+
+
+
+//decrease total
+const totalP = document.getElementById('total').innerText;
+const totalNum = parseFloat(totalP);
+const totalPrice = totalNum - 1231;
+document.getElementById('total').innerText = totalPrice;
+
+
+
+
+}
+
+})
+
+
+
+
+
+//case minus 
+
+   //Add case count
+   var addPhone = document.getElementById('ad-cs').addEventListener('click', function(){
+var currentNumber = document.getElementById('cr-cs').value;
+var number= parseFloat(currentNumber);
+var total = 1 + number;
+document.getElementById('cr-cs').value = total;
+
+//add case price
+var updatePrice = document.getElementById('cs-pr').innerText;
+var newPrice = parseFloat(updatePrice);
+var crPPrice = newPrice + 59;
+document.getElementById('cs-pr').innerText = crPPrice;
+
+
+//update case subtotal
+const subTotalPrice = document.getElementById('Subtotal').innerText;
+const cn = parseFloat(subTotalPrice);
+const totalSub = cn + 59;
+document.getElementById('Subtotal').innerText = totalSub;
+
+//update case tax
+const totalTax = document.getElementById('tax').innerText;
+const cvn = parseFloat(totalTax);
+const taxCount = cvn + 2;
+document.getElementById('tax').innerText = taxCount;
+
+
+//update total
+
+
+const totalP = document.getElementById('total').innerText;
+const totalNum = parseFloat(totalP);
+const totalPrice = totalNum + 59 + 2;
+document.getElementById('total').innerText = totalPrice;
+
+
+
+})
+
+
+//decrease phone count
+var removePhone = document.getElementById('rm-cs').addEventListener('click', function(){
+var rmPhone = document.getElementById('cr-cs').value;
+var cr = parseFloat(rmPhone);
+if (cr > 1){
+var still = cr - 1;
+document.getElementById('cr-cs').value = still;
+
+//decrease phone price
+var updatePrice = document.getElementById('cs-pr').innerText;
+var newPrice = parseFloat(updatePrice);
+var crPPrice = newPrice - 59;
+document.getElementById('cs-pr').innerText = crPPrice;
+
+
+//Decrease subtotal for phone
+const subTotalPrice = document.getElementById('Subtotal').innerText;
+const cn = parseFloat(subTotalPrice);
+if( cn >= 59){
+   const totalSub = cn - 59;
+document.getElementById('Subtotal').innerText = totalSub;
+}
+
+const totalTax = document.getElementById('tax').innerText;
+const cvn = parseFloat(totalTax);
+const taxCount = cvn - 2;
+document.getElementById('tax').innerText = taxCount;
+
+//decrease total
+
+const totalP = document.getElementById('total').innerText;
+const totalNum = parseFloat(totalP);
+const totalPrice = totalNum - 61;
+document.getElementById('total').innerText = totalPrice;
+}
+
+})
+</script>
+</body>
 </html>
